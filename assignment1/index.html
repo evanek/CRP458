@@ -1,181 +1,115 @@
+
 <!DOCTYPE html>
 <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
 }
+
 .navbar {
-  background-color: #333;
-    overflow: hidden;
+  overflow: hidden;
+  background-color: #333; 
 }
+
 .navbar a {
   float: left;
   font-size: 16px;
   color: white;
   text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
-.dropdown .dropbtn {
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
   font-size: 16px;  
+  border: none;
+  outline: none;
   color: white;
+  padding: 14px 16px;
   background-color: inherit;
+  font-family: inherit;
+  margin: 0;
 }
-.dropdown-content {
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: grey;
+}
+
+.subnav-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 140px;
+  left: 0;
+  background-color: gray;
+  width: 100%;
+  z-index: 1;
 }
 
-.dropdown-content a {
-  float: none;
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
   color: black;
-  text-align: left;
 }
 
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
+.subnav:hover .subnav-content {
   display: block;
 }
 </style>
-<title>Assignment 1</title>
+</head>
 <body>
 
 <div class="navbar">
-  <a href="../index.html">Home</a>
-  <div class="dropdown">
-    <button class="dropbtn">Dropdown 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-        <a href="../exercise1/index.html">Exercise 1</a>
-      <a href="../exercise2/index.html">Exercise 2</a>
-      <a href="https://github.com/tressahobbs/LA458/blob/master/exercise3/dams.geojson">Exercise 3</a>
-      <a href="../exercise4/index.html">Exercise 4</a>
+  <a href="https://evanek.github.io/CRP458/">Homepage</a>
+  <div class="subnav">
+    <button class="subnavbtn">Exercises <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="https://evanek.github.io/CRP458/exercise1">Exercise 1</a>
+      <a href="https://evanek.github.io/CRP458/exercise2">Exercise 2</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Assignments <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
     </div>
   </div> 
 </div>
-    <h2> Welcome to my whimsical webpage! Have fun exploring.</h2>
-<h4> What is your favorite dessert?</h4>
-    <input type="checkbox" id="dessert1" name="dessert1" value="cheesecake">
-    <label for="dessert1">My favorite dessert is cheesecake</label>
-    <input type="checkbox" id="dessert2" name="dessert2" value="chocolate covered strawberries">
-    <label for="dessert2">My favorite dessert is chocolate covered strawberries</label>
-    <input type="checkbox" id="dessert3" name="dessert3" value="cupcakes">
-    <label for="dessert3">My favorite dessert is cupcakes</label>
-    <input type="checkbox" id="dessert4" name="dessert4" value="ice cream">
-    <label for="dessert4">My favorite dessert is ice cream</label> 
-    
-    <button onclick="thisFunction()">Click me!</button> 
-    <button onclick="prompt('What is your favorite color?');">No, click me!</button>
-    
-    <p id="fruits"></p>
-    
-    <p> I'm thinking of a number. Guess which one: 4, 7, 8, 13, or 80?</p>
-        <input id="myInput" type="text">
-            <button onclick="numberfunction()">Try your luck</button>
-                <p id="luck"></p>
-    
-    
+    <p> Guess a number between those two numbers.</p>
+        <input id="guess" type="text">
+            <button onclick="guessGame()">Guess</button>
+                <p id="number"></p>
 </body>
-    
-  <script type="text/javascript">
-    var rows = prompt("How many rows for the multiplication table?");
-    var cols = prompt("How many columns for the multiplication table?");
-    if(rows == "" || rows == null)
-   		 rows = 10;
-    if(cols== "" || cols== null)
-   		 cols = 10;
-    createTable(rows, cols);
-    function createTable(rows, cols)
-      {
-        var j=1;
-      var output = "<table border='1'>";
-        var newArray = ["this array has been logged"];
-        console.log(newArray);
-      for(i=1;i<=rows;i++) 
-          //This loop is just running the i=1 until it is less than or equal to the rows variable input, while adding 1 to the old value on each return. So i=1 is defining the variable, i<=rows is the condition that the loop must meet to run, and i++ increases the value by 1 every time the loop runs successfully.
-      {
-    	output = output + "<tr>";
-        while(j<=cols)
-            //this "while" has the code looping as long as the variable j is less than or equal to the number of columns inputed for the prompt. It will stop the loop once the value of j is equal to the value inputed for the number of columns. 
-        {
-  		  output = output + "<td>" + i*j + "</td>";
-   		  j = j+1;
-   		}
-   		 output = output + "</tr>";
-   		 j = 1;
-      }
-          console.log("started next loop"+i);
-    output = output + "</table>";
-        document.write(output);
+<script>
+var min = window.prompt("Lets play a game. Pick a number between 1 and 10.");
+var max = window.prompt("Now, select a number between 100 and 1,000");
+var mysteryNum = Math.floor(Math.random() * max) - min;
+
+function guessGame(){
+	var number = document.getElementById("guess").value;
+    if (number == mysteryNum){
+    	document.getElementById("number").innerHTML = "You win!";
     }
-            function thisFunction() {alert("Thanks for checking out my page!");} 
-      
-      var colors = [{
-                                kind:"red",
-                                tone:"warm", 
-                                primarycolor:true
-                                }, 
-                               {king:"blue",
-                                tone:"cool",
-                                primarycolor:true
-                               },
-                               {kind:"green",
-                                tone:"warm",
-                                primarycolor:false
-                               },
-                                {kind:"yellow", 
-                                 tone:"warm",
-                                 primarycolor:true
-                                },
-                               {kind:"purple",
-                                tone:"warm",
-                                primarycolor:false
-                               },
-                               {kind:"orange", 
-                                tone:"warm",
-                                primarycolor:false
-                               },
-                               {kind:"pink",
-                                tone:"warm",
-                                primarycolor:false
-                               },
-                               ];
-            console.log(colors);
-        var fruits = ["strawberry", "banana", "mango", "kiwi", "pomegranate"];
-        var text = "";
-        var r; 
-        for (r = 0; r<fruits.length; r++)////the code will loop, adding one to the value  until it has reached the number of items contained within the array, in this case it is 5 fruits and the code prints the names of the fruit
-        {
-            text += fruits[r] + "<br>";
-        }
-        document.getElementById("fruits").innerHTML = text;  
-         
-        document.write (32+43/2); 
-      
-      function numberfunction() {
-          var number = document.getElementById("myInput").value;
-          var text;
-            //if the number is "4"
-            if (number === "4") {
-                text = "You're a lucky one! You're right.";
-            }
-          // if the number is "7" or "8"
-            else if (number === "7" || number === "8") {
-                text = "You're close, but not quite.";
-            }
-          //if the number is "13"
-          else if (number === "13") {
-            text = "13 is unlucky, just like you. Better luck next time.";
-            } 
-          // if the number is "80"
-          else { 
-              text = "Waaaay off... try going a bit lower.";
-          }
-          document.getElementById("luck").innerHTML = text;
-      }
+    else if (number > mysteryNum){
+    	document.getElementById("number").innerHTML = "Too high";
+    }
+    else {
+    	document.getElementById("number").innerHTML = "Too low";
+    }
+	}
+
+
+
 </script>
 </html>
