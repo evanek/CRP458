@@ -17,73 +17,73 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
-        #map {
-            width: 900px;
-            height: 600px;
-        }
-        
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-}
+          #map {
+              width: 900px;
+              height: 600px;
+          }
 
-.navbar {
-  overflow: hidden;
-  background-color: #333; 
-}
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
 
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
+  .navbar {
+    overflow: hidden;
+    background-color: #333; 
+  }
 
-.subnav {
-  float: left;
-  overflow: hidden;
-}
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
 
-.subnav .subnavbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
+  .subnav {
+    float: left;
+    overflow: hidden;
+  }
 
-.navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: grey;
-}
+  .subnav .subnavbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
 
-.subnav-content {
-  display: none;
-  position: absolute;
-  left: 0;
-  background-color: gray;
-  width: 100%;
-  z-index: 1;
-}
+  .navbar a:hover, .subnav:hover .subnavbtn {
+    background-color: grey;
+  }
 
-.subnav-content a {
-  float: left;
-  color: white;
-  text-decoration: none;
-}
+  .subnav-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: gray;
+    width: 100%;
+    z-index: 1;
+  }
 
-.subnav-content a:hover {
-  background-color: #eee;
-  color: black;
-}
+  .subnav-content a {
+    float: left;
+    color: white;
+    text-decoration: none;
+  }
 
-.subnav:hover .subnav-content {
-  display: block;
-}
+  .subnav-content a:hover {
+    background-color: #eee;
+    color: black;
+  }
+
+  .subnav:hover .subnav-content {
+    display: block;
+  }
         
    
 </style>
@@ -116,21 +116,40 @@ body {
 
 
     <script>
-        var map = L.map('map').setView([42.029430, -93.644952], 13);
+        var map = L.map('map').setView([42.029430, -93.644952], 4);
 
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=		{accessToken}', {
+            attribution: 'Map data &copy; <a  	href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
             id: 'mapbox/streets-v11',
             accessToken: 'pk.eyJ1IjoiZW1pbHl2YW5layIsImEiOiJjazZzdHQ1bncwM21lM2RvNnE4b2FsaWU4In0.NzHVc4EG2w1zxxT6S9VNVQ' 
         }).addTo(map);
 
-        L.marker([42.029430, -93.644952]).addTo(map)
-            .bindPopup("Iowa State Univeristy")
-            .openPopup();
+		L.marker([44.644081, -85.767189]).addTo(map)
+        
+        var popup = L.popup()
+        .setLatLng([44.644081, -85.767189])
+        .setContent('<p>This is my hometown.</p>')
+        .openOn(map);
+        
+        L.circleMarker([45, -90]).addTo(map)
+            
+        L.circle([37.986931, -81.808595], {radius: 300000}).addTo(map);
+        
+        var latlngs = [
+            [43, -94],
+            [42, -93],
+            [41, -92]
+        ];
+        var polyline = L.polyline(latlngs, {color: 'pink'}).addTo(map);
+        
+        
+        var latlngs = [[38, -119.05],[40, -119.03],[40, -102.05],[38, -102.04]];
+		var polygon = L.polygon(latlngs, {color: 'yellow'}).addTo(map);
+
    
 
-    </script>
+</script>
 
 </body>
 </html>
