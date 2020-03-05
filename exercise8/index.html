@@ -13,9 +13,9 @@
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
 
-    <script src="../geojson/Greenbelt_DOTS_Milepost_Markers.geojson"></script>
-    <script src="../geojson/Urban_and_Foothill_Ridge_to_River_Trails.geojson"></script>
-    <script src="../geojson/Neighborhood_Associations.geojson"></script>
+    <script src="../geojson/centraliowa_towns.geojson"></script>
+    <script src="../geojson/iowa_interstates.geojson"></script>
+    <script src="../geojson/states.geojson"></script>
         
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -133,9 +133,9 @@
             accessToken: 'pk.eyJ1IjoiZW1pbHl2YW5layIsImEiOiJjazZzdHQ1bncwM21lM2RvNnE4b2FsaWU4In0.NzHVc4EG2w1zxxT6S9VNVQ' 
         }).addTo(map);
         
-        L.geoJSON(greenbelt_DOTS_Milepost_Markers).addTo(map);
-        L.geoJSON(urban_and_Foothill_Ridge_to_River_Trails).addTo(map);
-        L.geoJSON(neighborhood_Associations).addTo(map);
+        L.geoJSON(states).addTo(map);
+        L.geoJSON(iowa_interstates).addTo(map);
+        L.geoJSON(centraliowa_towns).addTo(map);
 
 
    
