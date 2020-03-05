@@ -142,7 +142,7 @@
 			opacity: 1,
 			color: 'white',
 			fillOpacity: 0.7,
-			fillColor: getColor(feature.properties.density)
+			fillColor: getColor(feature.properties.delegate_count)
 		};
         
         	}
@@ -181,7 +181,7 @@
           });
       }
 
-      geojson = L.geoJson(map, {
+      geojson = L.geoJson(states, {
           style: style,
           onEachFeature: onEachFeature
       });
